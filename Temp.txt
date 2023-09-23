@@ -1,0 +1,10 @@
+@echo off
+REM Clear Windows Temp folder
+del /q /s /f %temp%\*.*
+
+REM Clear Google Chrome cache (modify the path if needed)
+cd /d "%LocalAppData%\Google\Chrome\User Data\Default\Cache"
+del /q /s /f *.*
+
+REM Schedule the script to run every 12 hours (adjust the time as needed)
+schtasks /create /sc hourly /mo 12 /tn "ClearTempAndCache" /tr "C:\path\to\clear_temp_cache.bat"
